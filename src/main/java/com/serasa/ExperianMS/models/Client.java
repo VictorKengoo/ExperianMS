@@ -20,19 +20,19 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Aluno {
+public class Client {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "studentId")
+    @Column(name = "clientId")
 	private Long Id;
     
-    @Column(name = "studentName")
+    @Column(name = "clientName")
     private String name;
     
-    @Column(name = "studentBirthdate")
+    @Column(name = "clientBirthdate")
     private Date birth;
     
-    @Column(name = "studentPhoneNumber")
+    @Column(name = "clientPhoneNumber")
     private Integer phoneNumber;
 }
