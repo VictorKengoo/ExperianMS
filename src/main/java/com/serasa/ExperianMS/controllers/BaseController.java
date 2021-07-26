@@ -28,22 +28,19 @@ import lombok.RequiredArgsConstructor;
 public class BaseController {
 	
     private final ClientService clientService;
+    
+    @RequestMapping()
+    public String helloMessage() {
+    	return "Welcome to ExperianMS API";
+    }
 
     @GetMapping(path = "/clients")
-    public ResponseEntity<ErrorResponse<List<Client>>> listAllClients(BindingResult result) {
-		if(result.hasErrors()) {
-			ErrorUtils<List<Client>> errorUtils = new ErrorUtils<>();
-			return errorUtils.returnError(result.getAllErrors());
-		}
+    public ResponseEntity<ErrorResponse<List<Client>>> listAllClients() {
         return ResponseEntity.ok(new ErrorResponse<List<Client>>(clientService.listAll()));
     }
     
-    @GetMapping(path = "/client")
-    public ResponseEntity<ErrorResponse<Optional<Client>>> listClientById(@PathVariable Long id, BindingResult result) {
-		if(result.hasErrors()) {
-			ErrorUtils<Optional<Client>> errorUtils = new ErrorUtils<>();
-			return errorUtils.returnError(result.getAllErrors());
-		}
+    @GetMapping(path = "/client/{id}")
+    public ResponseEntity<ErrorResponse<Optional<Client>>> listClientById(@PathVariable Long id) {
         return ResponseEntity.ok(new ErrorResponse<Optional<Client>>(clientService.listById(id)));
     }
     

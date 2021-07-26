@@ -16,11 +16,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity(name = "Client")
@@ -36,10 +38,10 @@ public class Client {
     
     @Past
     @Column(name = "clientBirthdate")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
     
     @Column(name = "clientPhoneNumber")
     @Size(min = 9, max = 14)
-    private Integer phoneNumber;
+    private String phoneNumber;
 }
