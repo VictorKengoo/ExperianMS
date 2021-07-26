@@ -33,7 +33,7 @@ public class BaseController {
     public ResponseEntity<ErrorResponse<List<Client>>> listAllClients(BindingResult result) {
 		if(result.hasErrors()) {
 			ErrorUtils<List<Client>> errorUtils = new ErrorUtils<>();
-			return errorUtils.returnError(result);
+			return errorUtils.returnError(result.getAllErrors());
 		}
         return ResponseEntity.ok(new ErrorResponse<List<Client>>(clientService.listAll()));
     }
@@ -42,7 +42,7 @@ public class BaseController {
     public ResponseEntity<ErrorResponse<Optional<Client>>> listClientById(@PathVariable Long id, BindingResult result) {
 		if(result.hasErrors()) {
 			ErrorUtils<Optional<Client>> errorUtils = new ErrorUtils<>();
-			return errorUtils.returnError(result);
+			return errorUtils.returnError(result.getAllErrors());
 		}
         return ResponseEntity.ok(new ErrorResponse<Optional<Client>>(clientService.listById(id)));
     }
@@ -51,7 +51,7 @@ public class BaseController {
     public ResponseEntity<ErrorResponse<Client>> createClient(@RequestBody @Valid Client client, BindingResult result) {
 		if(result.hasErrors()) {
 			ErrorUtils<Client> errorUtils = new ErrorUtils<>();
-			return errorUtils.returnError(result);
+			return errorUtils.returnError(result.getAllErrors());
 		}
         return new ResponseEntity<>(new ErrorResponse<Client>(clientService.insert(client)), HttpStatus.CREATED);
     }

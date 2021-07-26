@@ -20,18 +20,18 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public Client insert(Client client) {
-		this.clientRepository.save(client);
+		clientRepository.save(client);
 		return client;
 	}
 
 	@Override
 	public List<Client> listAll() {
-		return this.clientRepository.findAll();
+		return clientRepository.findAll();
 	}
 
 	@Override
 	public Optional<Client> listById(Long id) {
-		return this.clientRepository.findById(id);
+		return clientRepository.findById(id);
 	}
 
 }
