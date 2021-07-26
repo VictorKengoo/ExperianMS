@@ -11,16 +11,16 @@ import lombok.Setter;
 @Setter
 @Builder
 @AllArgsConstructor
-public class Response <T>{
+public class ErrorResponse <T>{
 
 	private T data;
 	private List<String> errors;
 	
-	public Response(T data) {
+	public ErrorResponse(T data) {
 		this.data = data;
 	}
 	
-	public Response(List<String> errors) {
+	public ErrorResponse(List<String> errors) {
 		this.errors = errors;
 	}
 }

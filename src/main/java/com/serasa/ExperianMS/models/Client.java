@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,12 +18,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity(name = "Client")
 public class Client {
 	
     @Id
@@ -30,9 +34,12 @@ public class Client {
     @Column(name = "clientName")
     private String name;
     
+    @Past
     @Column(name = "clientBirthdate")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date birth;
     
     @Column(name = "clientPhoneNumber")
+    @Size(min = 9, max = 14)
     private Integer phoneNumber;
 }

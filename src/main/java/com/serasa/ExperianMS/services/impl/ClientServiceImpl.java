@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.serasa.ExperianMS.models.Client;
 import com.serasa.ExperianMS.repository.ClientRepository;
 import com.serasa.ExperianMS.services.ClientService;
 
-public class ClientServiceImpl implements ClientService {
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ClientServiceImpl implements ClientService {	
 	
-	@Autowired
-	private ClientRepository clientRepository;
+	private final ClientRepository clientRepository;
 
 	@Override
 	public Client insert(Client client) {
